@@ -38,3 +38,36 @@ def create_employee(name, email, position):
     connection.commit()
 
     connection.close()
+
+def get_employee_by_id(employee_id):
+
+    connection = get_connection()
+
+    cursor = connection.cursor()
+
+    cursor.execute(
+        "SELECT * FROM employees WHERE id = ?",
+        (employee_id,)
+    )
+
+    employee = cursor.fetchone()
+
+    connection.close()
+
+    return employee
+
+def delete_employee(employee_id):
+
+    connection = get_connection()
+
+    cursor = connection.cursor()
+
+    cursor.execute(
+        "DELETE FROM employees WHERE id = ?",
+        (employee_id,)
+    )
+
+    connection.commit()
+
+    connection.close()
+
