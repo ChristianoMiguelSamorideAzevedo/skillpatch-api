@@ -39,6 +39,23 @@ def delete_employee_route(employee_id):
         "message": f"Employee {employee_id} deleted successfully"
     })
 
+
+@app.route("/employees", methods=["POST"])
+def create_employee_route():
+
+    data = request.get_json()
+
+    create_employee(
+        data["name"],
+        data["email"],
+        data["position"]
+    )
+
+    return jsonify({
+        "message": "Employee created successfully"
+    }), 201
+
+
 if __name__ == "__main__":
     app.run(debug=True)
 
