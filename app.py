@@ -10,12 +10,12 @@ from services.employee_service import (
 
 app = OpenAPI(__name__)
 
-@app.route("/")
+@app.get("/")
 def home():
     return "SkillPatch API is running!"
 
 
-@app.route("/employees", methods=["GET"])
+@app.get("/employees")
 def get_employees():
 
     employees = get_all_employees()
