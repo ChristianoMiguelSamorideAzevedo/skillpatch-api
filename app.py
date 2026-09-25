@@ -1,4 +1,5 @@
-from flask import Flask, jsonify, request
+from flask import jsonify, request
+from flask_openapi3 import OpenAPI
 
 from services.employee_service import (
     get_all_employees,
@@ -7,8 +8,7 @@ from services.employee_service import (
     create_employee
 )
 
-app = Flask(__name__)
-
+app = OpenAPI(__name__)
 
 @app.route("/")
 def home():
